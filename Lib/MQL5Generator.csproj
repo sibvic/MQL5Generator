@@ -5,4 +5,8 @@
     <RootNamespace>ProfitRobots.TradeScriptConverter.Generators.MQL5</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\PineScriptModel\Lib\Model.csproj" />
+  </ItemGroup>
+
 </Project>
