@@ -1,4 +1,5 @@
 ﻿using ProfitRobots.TradeScriptConverter.Generators.MQL5.Properties;
+using ProfitRobots.TradeScriptConverter.Generators.MQLBase;
 using ProfitRobots.TradeScriptConverter.Model;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
                     case "<<INDICATOR_INIT_BUFFERS>>":
                         break;
                     case "<<INPUT_PARAMETERS>>":
+                        InputGenerator.AddParameters(script, code);
                         break;
                     case "<<INDICATOR_BUFFERS_DEFINITION>>":
                         break;

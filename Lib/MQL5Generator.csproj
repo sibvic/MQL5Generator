@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\MQLGeneratorBase\Lib\MQLGeneratorBase.csproj" />
     <ProjectReference Include="..\..\PineScriptModel\Lib\Model.csproj" />
   </ItemGroup>
 
