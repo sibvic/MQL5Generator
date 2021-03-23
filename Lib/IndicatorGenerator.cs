@@ -39,13 +39,16 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
                         code.AppendLine("   IndicatorSetString(INDICATOR_SHORTNAME, \"" + script.Title + "\");");
                         break;
                     case "<<INDICATOR_INIT_BUFFERS>>":
+                        AddPlotsInit(code, plots);
                         break;
                     case "<<INPUT_PARAMETERS>>":
                         InputGenerator.AddParameters(script, code);
                         break;
                     case "<<INDICATOR_BUFFERS_DEFINITION>>":
+                        PlotGenerator.AddPlotsDefinition(code, plots);
                         break;
                     case "<<BUFFER_INITIALIZE>>":
+                        AddPlotsInitialization(code, plots);
                         break;
                     default:
                         code.AppendLine(line);
@@ -53,6 +56,40 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
                 }
             }
             return code.ToString();
+        }
+
+        private static string GetPlotStyle(Value plot)
+        {
+            var style = ValueHelper.FindParameterValue(plot, "style");
+            if (style == null)
+            {
+                return "DRAW_LINE";
+            }
+            switch (style.Content)
+            {
+                case "plot.style_line":
+                    return "DRAW_LINE";
+                default:
+                    //throw new NotImplementedException();
+                    break;
+            }
+            return "DRAW_LINE";
+        }
+
+        private static void AddPlotsInitialization(StringBuilder code, List<Value> plots)
+        {
+            for (int index = 0; index < plots.Count; ++index)
+            {
+                code.AppendLine($"      ArrayInitialize(plot{index + 1}, EMPTY_VALUE);");
+            }
+        }
+
+        private static void AddPlotsInit(StringBuilder code, List<Value> plots)
+        {
+            for (int index = 0; index < plots.Count; ++index)
+            {
+                code.AppendLine($"   SetIndexBuffer({index}, plot{index + 1}, INDICATOR_DATA);");
+            }
         }
 
         private static void AddBuffersDefinition(Script script, StringBuilder code, List<Value> plots)
@@ -63,6 +100,26 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
         private static void AddPlotsDefinition(Script script, StringBuilder code, List<Value> plots)
         {
             code.AppendLine("#property indicator_plots " + plots.Count);
+            for (int index = 0; index < plots.Count; ++index)
+            {
+                var plot = plots[index];
+                var title = ValueHelper.FindParameterValue(plot, "title");
+                if (title != null)
+                {
+                    code.AppendLine($"#property indicator_label{index + 1} \"{title.Content}\"");
+                }
+                var style = ValueHelper.FindParameterValue(plot, "style");
+                switch (style?.Content)
+                {
+                    case null:
+                        break;
+                }
+
+                code.AppendLine($"#property indicator_type{index + 1} " + GetPlotStyle(plot));
+                code.AppendLine($"#property indicator_color{index + 1} " + PlotGenerator.GetPlotColor(plot));
+                code.AppendLine($"#property indicator_style{index + 1} STYLE_SOLID");//TODO: support style
+                code.AppendLine($"#property indicator_width{index + 1} 1");//TODO: support width
+            }
         }
     }
 }

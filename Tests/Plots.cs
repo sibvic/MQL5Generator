@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ProfitRobots.TradeScriptConverter.Common;
 using ProfitRobots.TradeScriptConverter.Generators.TestsCases;
 
 namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
@@ -11,7 +12,39 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
         {
             var script = Plots.CreateLinePlot();
             var code = IndicatorGenerator.Generate(script);
-            throw new System.NotImplementedException();
+            Verifier.CompareLineByLine(code, @"#property strict
+
+#property indicator_chart_window
+#property indicator_buffers 1
+#property indicator_plots 1
+#property indicator_label1 ""CCI Turbo""
+#property indicator_type1 DRAW_LINE
+#property indicator_color1 Green
+#property indicator_style1 STYLE_SOLID
+#property indicator_width1 1
+
+input int bars_limit = 1000; // Bars limit
+double plot1[];
+
+" + Constants.NAME_PREFIX + @"
+void OnInit()
+{
+   IndicatorObjPrefix = GenerateIndicatorPrefix(""HGVSAVA"");
+   IndicatorSetString(INDICATOR_SHORTNAME, """ + ModelGenerator.DefaultIndicatorTitle + @""");
+   IndicatorSetInteger(INDICATOR_DIGITS, Digits());
+   SetIndexBuffer(0, plot1, INDICATOR_DATA);
+}
+
+" + Constants.EMPTY_DEINIT + @"
+" + Constants.ONCALC_HEADER + @"
+      ArrayInitialize(plot1, EMPTY_VALUE);
+" + Constants.PRE_FOR + @"
+   for (int pos = MathMax(rates_total - 1 - bars_limit, MathMax(first, prev_calculated - 1)); pos < rates_total; ++pos)
+   {
+      int oldPos = rates_total - pos - 1;
+   }
+" + Constants.POST_FOR + @"}
+");
         }
     }
 }
