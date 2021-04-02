@@ -77,7 +77,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
             return "DRAW_LINE";
         }
 
-        private static void AddPlotsInitialization(StringBuilder code, List<Value> plots, List<Value> streams)
+        private static void AddPlotsInitialization(StringBuilder code, List<Value> plots, List<string> streams)
         {
             for (int index = 0; index < plots.Count; ++index)
             {
@@ -85,11 +85,11 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
             }
             for (int index = 0; index < streams.Count; ++index)
             {
-                code.AppendLine($"      ArrayInitialize({streams[index].Content}, EMPTY_VALUE);");
+                code.AppendLine($"      ArrayInitialize({streams[index]}, EMPTY_VALUE);");
             }
         }
 
-        private static void AddPlotsInit(StringBuilder code, List<Value> plots, List<Value> streams)
+        private static void AddPlotsInit(StringBuilder code, List<Value> plots, List<string> streams)
         {
             for (int index = 0; index < plots.Count; ++index)
             {
@@ -97,11 +97,11 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
             }
             for (int index = 0; index < streams.Count; ++index)
             {
-                code.AppendLine($"   SetIndexBuffer({index + plots.Count}, {streams[index].Content}, INDICATOR_CALCULATIONS);");
+                code.AppendLine($"   SetIndexBuffer({index + plots.Count}, {streams[index]}, INDICATOR_CALCULATIONS);");
             }
         }
 
-        private static void AddBuffersDefinition(Script script, StringBuilder code, List<Value> plots, List<Value> streams)
+        private static void AddBuffersDefinition(Script script, StringBuilder code, List<Value> plots, List<string> streams)
         {
             code.AppendLine("#property indicator_buffers " + (plots.Count + streams.Count));
         }
