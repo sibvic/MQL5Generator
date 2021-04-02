@@ -17,6 +17,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
             var templateLines = rm.GetString("indicator_base.mq5").Split(new string[] { "\r\n" }, StringSplitOptions.None);
 
             var plots = script.FindUsedPlots().ToList();
+            var streams = script.FindInternalStreams().ToList();
 
             var code = new StringBuilder();
             foreach (var line in templateLines)
@@ -27,7 +28,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
                         code.AppendLine("#property indicator_chart_window");//TODO: Support oscillators
                         break;
                     case "<<INDICATOR_BUFFERS>>":
-                        AddBuffersDefinition(script, code, plots);
+                        AddBuffersDefinition(script, code, plots, streams);
                         break;
                     case "<<INDICATOR_PLOTS>>":
                         AddPlotsDefinition(script, code, plots);
@@ -39,16 +40,16 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
                         code.AppendLine("   IndicatorSetString(INDICATOR_SHORTNAME, \"" + script.Title + "\");");
                         break;
                     case "<<INDICATOR_INIT_BUFFERS>>":
-                        AddPlotsInit(code, plots);
+                        AddPlotsInit(code, plots, streams);
                         break;
                     case "<<INPUT_PARAMETERS>>":
                         InputGenerator.AddParameters(script, code);
                         break;
                     case "<<INDICATOR_BUFFERS_DEFINITION>>":
-                        PlotGenerator.AddPlotsDefinition(code, plots);
+                        PlotGenerator.AddPlotsDefinition(code, plots, streams);
                         break;
                     case "<<BUFFER_INITIALIZE>>":
-                        AddPlotsInitialization(code, plots);
+                        AddPlotsInitialization(code, plots, streams);
                         break;
                     default:
                         code.AppendLine(line);
@@ -76,25 +77,33 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
             return "DRAW_LINE";
         }
 
-        private static void AddPlotsInitialization(StringBuilder code, List<Value> plots)
+        private static void AddPlotsInitialization(StringBuilder code, List<Value> plots, List<Value> streams)
         {
             for (int index = 0; index < plots.Count; ++index)
             {
                 code.AppendLine($"      ArrayInitialize(plot{index + 1}, EMPTY_VALUE);");
             }
+            for (int index = 0; index < streams.Count; ++index)
+            {
+                code.AppendLine($"      ArrayInitialize({streams[index].Content}, EMPTY_VALUE);");
+            }
         }
 
-        private static void AddPlotsInit(StringBuilder code, List<Value> plots)
+        private static void AddPlotsInit(StringBuilder code, List<Value> plots, List<Value> streams)
         {
             for (int index = 0; index < plots.Count; ++index)
             {
                 code.AppendLine($"   SetIndexBuffer({index}, plot{index + 1}, INDICATOR_DATA);");
             }
+            for (int index = 0; index < streams.Count; ++index)
+            {
+                code.AppendLine($"   SetIndexBuffer({index + plots.Count}, {streams[index].Content}, INDICATOR_CALCULATIONS);");
+            }
         }
 
-        private static void AddBuffersDefinition(Script script, StringBuilder code, List<Value> plots)
+        private static void AddBuffersDefinition(Script script, StringBuilder code, List<Value> plots, List<Value> streams)
         {
-            code.AppendLine("#property indicator_buffers " + plots.Count);
+            code.AppendLine("#property indicator_buffers " + (plots.Count + streams.Count));
         }
 
         private static void AddPlotsDefinition(Script script, StringBuilder code, List<Value> plots)

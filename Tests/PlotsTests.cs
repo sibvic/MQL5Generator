@@ -4,6 +4,7 @@ using ProfitRobots.TradeScriptConverter.Generators.TestsCases;
 
 namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
 {
+
     [TestClass]
     public class PlotsTests
     {
