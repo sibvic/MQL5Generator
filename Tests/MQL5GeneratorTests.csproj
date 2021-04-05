@@ -20,4 +20,37 @@
     <ProjectReference Include="..\Lib\MQL5Generator.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="ref\BaseTests\IndicatorHeader.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ref\InputTests\BoolInput.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ref\InputTests\FloatInput.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ref\InputTests\Integer.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ref\InputTests\SourceInput.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ref\InputTests\StringInput.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ref\PlotsTests\LinePlot.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ref\PlotsTests\TwoPlots.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ref\StreamTests\InternalStreamLaterUse.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ref\StreamTests\InternalStreamReuse.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
