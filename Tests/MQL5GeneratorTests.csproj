@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\TradeScriptCommon\TradeScriptCommon.csproj" />
     <ProjectReference Include="..\..\GeneratorTestCases\GeneratorTestCases.csproj" />
-    <ProjectReference Include="..\..\TradeScriptCommon\TradeScriptCommon.csproj" />
     <ProjectReference Include="..\Lib\MQL5Generator.csproj" />
   </ItemGroup>
 
