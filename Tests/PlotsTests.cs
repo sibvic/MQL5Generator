@@ -18,6 +18,15 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
         }
 
         [TestMethod]
+        public void LinePlotCustomColor()
+        {
+            var script = Plots.CreateLinePlotCustomColor();
+            var code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "PlotsTests", "LinePlotCustomColor.mq5"));
+            Verifier.CompareLineByLine(code, reference);
+        }
+
+        [TestMethod]
         public void TwoPlots()
         {
             var script = Plots.CreateTwoPlots();
