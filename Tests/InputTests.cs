@@ -51,5 +51,14 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
             var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "InputTests", "SourceInput.mq5"));
             Verifier.CompareLineByLine(code, reference);
         }
+
+        [TestMethod]
+        public void TimeframeInput()
+        {
+            var script = Input.CreateTimeframeParameter();
+            string code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "InputTests", "TimeframeInput.mq5"));
+            Verifier.CompareLineByLine(code, reference);
+        }
     }
 }
