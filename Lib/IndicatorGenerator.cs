@@ -70,6 +70,14 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
             {
                 case "plot.style_line":
                     return "DRAW_LINE";
+                case "plot.style_stepline":
+                case "plot.style_histogram":
+                case "plot.style_cross":
+                case "plot.style_area":
+                case "plot.style_columns":
+                case "plot.style_circles":
+                case "plot.style_linebr":
+                case "plot.style_areabr":
                 default:
                     //throw new NotImplementedException();
                     break;
