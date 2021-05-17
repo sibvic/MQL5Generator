@@ -39,7 +39,13 @@
     <None Update="ref\InputTests\StringInput.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ref\PlotsTests\HLine.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ref\PlotsTests\LinePlot.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ref\PlotsTests\LinePlotCustomColor.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="ref\PlotsTests\TwoPlots.mq5">
