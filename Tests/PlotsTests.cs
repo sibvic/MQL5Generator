@@ -41,6 +41,13 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
             var script = Plots.CreateHLine();
             var code = IndicatorGenerator.Generate(script);
             var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "PlotsTests", "HLine.mq5"));
+                Verifier.CompareLineByLine(code, reference);
+        }
+        public void PlotShapeLabel()
+        {
+            var script = Plots.CreatePlotShapeLabel();
+            var code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "PlotsTests", "PlotShapeLabel.mq5"));
             Verifier.CompareLineByLine(code, reference);
         }
     }
