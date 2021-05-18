@@ -123,6 +123,7 @@
 &lt;&lt;INDICATOR_TYPE&gt;&gt;
 &lt;&lt;INDICATOR_BUFFERS&gt;&gt;
 &lt;&lt;INDICATOR_PLOTS&gt;&gt;
+&lt;&lt;HLINES&gt;&gt;
 
 &lt;&lt;INPUT_PARAMETERS&gt;&gt;
 input int bars_limit = 1000; // Bars limit

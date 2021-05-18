@@ -18,12 +18,16 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
 
             var plots = script.FindUsedPlots().ToList();
             var streams = script.FindInternalStreams().ToList();
+            var hlines = script.FindHLines().ToList();
 
             var code = new StringBuilder();
             foreach (var line in templateLines)
             {
                 switch (line)
                 {
+                    case "<<HLINES>>":
+                        PlotGenerator.AddHLines(code, hlines);
+                        break;
                     case "<<INDICATOR_TYPE>>":
                         code.AppendLine("#property indicator_chart_window");//TODO: Support oscillators
                         break;
