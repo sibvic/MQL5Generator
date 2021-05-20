@@ -24,6 +24,9 @@
     <None Update="ref\BaseTests\IndicatorHeader.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ref\BaseTests\OscillatorHeader.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ref\InputTests\BoolInput.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
