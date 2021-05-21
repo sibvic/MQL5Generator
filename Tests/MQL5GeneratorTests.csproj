@@ -30,6 +30,9 @@
     <None Update="ref\InputTests\BoolInput.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ref\InputTests\CurrentTimeframeInput.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ref\InputTests\FloatInput.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -40,6 +43,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="ref\InputTests\StringInput.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ref\InputTests\TimeframeInput.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="ref\PlotsTests\HLine.mq5">
