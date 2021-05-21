@@ -29,7 +29,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
                         PlotGenerator.AddHLines(code, hlines);
                         break;
                     case "<<INDICATOR_TYPE>>":
-                        code.AppendLine("#property indicator_chart_window");//TODO: Support oscillators
+                        BaseGenerator.AddIndicatorType(script, code);
                         break;
                     case "<<INDICATOR_BUFFERS>>":
                         AddBuffersDefinition(script, code, plots, streams);
