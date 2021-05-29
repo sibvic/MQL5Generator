@@ -15,5 +15,14 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
             var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "OperationTests", "IfWithReturnValue.mq5"));
             Verifier.CompareLineByLine(code, reference);
         }
+
+        [TestMethod]
+        public void AssignIntToVar()
+        {
+            var script = Operations.CreateAssignIntToVar();
+            string code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "OperationTests", "AssignIntToVar.mq5"));
+            Verifier.CompareLineByLine(code, reference);
+        }
     }
 }

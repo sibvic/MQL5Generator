@@ -11,6 +11,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
 {
     public class IndicatorGenerator
     {
+        static IValueFormatter valueFormatter = new MQL5ValueFormatter();
         public static string Generate(Script script)
         {
             var rm = new ResourceManager(typeof(Resources));
@@ -19,6 +20,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
             var plots = script.FindUsedPlots().ToList();
             var streams = script.FindInternalStreams().ToList();
             var hlines = script.FindHLines().ToList();
+            var variables = script.FindVariables().ToList();
 
             var code = new StringBuilder();
             foreach (var line in templateLines)
@@ -54,6 +56,12 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
                         break;
                     case "<<BUFFER_INITIALIZE>>":
                         AddPlotsInitialization(code, plots, streams);
+                        break;
+                    case "<<VARIABLES_DEFINITION>>":
+                        VariableGenerator.AddDefitions(code, variables, script.DataTypes);
+                        break;
+                    case "<<VARIABLES_INIT>>":
+                        VariableGenerator.AddInitialization(code, variables, valueFormatter);
                         break;
                     default:
                         code.AppendLine(line);

@@ -71,6 +71,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Properties {
         ///&lt;&lt;INPUT_PARAMETERS&gt;&gt;
         ///input int bars_limit = 1000; // Bars limit
         ///&lt;&lt;INDICATOR_BUFFERS_DEFINITION&gt;&gt;
+        ///&lt;&lt;VARIABLES_DEFINITION&gt;&gt;
         ///
         ///string IndicatorObjPrefix;
         ///
@@ -86,9 +87,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Properties {
         ///   return false;
         ///}
         ///
-        ///string GenerateIndicatorPrefix(const string target)
-        ///{
-        ///   for ( [rest of string was truncated]&quot;;.
+        ///string GenerateIndicatorPrefix(const s [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string indicator_base_mq5 {
             get {

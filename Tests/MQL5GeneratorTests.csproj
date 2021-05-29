@@ -48,6 +48,9 @@
     <None Update="ref\InputTests\TimeframeInput.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ref\OperationTests\AssignIntToVar.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ref\OperationTests\IfWithReturnValue.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

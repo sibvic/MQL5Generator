@@ -128,6 +128,7 @@
 &lt;&lt;INPUT_PARAMETERS&gt;&gt;
 input int bars_limit = 1000; // Bars limit
 &lt;&lt;INDICATOR_BUFFERS_DEFINITION&gt;&gt;
+&lt;&lt;VARIABLES_DEFINITION&gt;&gt;
 
 string IndicatorObjPrefix;
 
@@ -162,6 +163,7 @@ void OnInit()
 &lt;&lt;INDICATOR_SHORT_NAME&gt;&gt;
    IndicatorSetInteger(INDICATOR_DIGITS, Digits());
 &lt;&lt;INDICATOR_INIT_BUFFERS&gt;&gt;
+&lt;&lt;VARIABLES_INIT&gt;&gt;
 }
 
 void OnDeinit(const int reason)
