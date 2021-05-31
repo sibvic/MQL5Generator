@@ -63,12 +63,27 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
                     case "<<VARIABLES_INIT>>":
                         VariableGenerator.AddInitialization(code, variables, valueFormatter);
                         break;
+                    case "<<OPERATIONS>>":
+                        AddOperations(code, script);
+                        break;
                     default:
                         code.AppendLine(line);
                         break;
                 }
             }
             return code.ToString();
+        }
+
+        private static void AddOperations(StringBuilder code, Script script)
+        {
+            foreach (var operation in script.Operations)
+            {
+                var value = valueFormatter.Format(operation);
+                if (value != "")
+                {
+                    code.AppendLine(value);
+                }
+            }
         }
 
         private static string GetPlotStyle(Value plot)

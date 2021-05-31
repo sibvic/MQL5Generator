@@ -190,6 +190,7 @@ int OnCalculate(const int rates_total,
    for (int pos = MathMax(rates_total - 1 - bars_limit, MathMax(first, prev_calculated - 1)); pos &lt; rates_total; ++pos)
    {
       int oldPos = rates_total - pos - 1;
+&lt;&lt;OPERATIONS&gt;&gt;
    }
    return rates_total;
 }</value>
