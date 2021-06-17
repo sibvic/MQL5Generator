@@ -11,7 +11,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
 {
     public class IndicatorGenerator
     {
-        static IValueFormatter valueFormatter = new MQL5ValueFormatter();
+        static IValueFormatter valueFormatter;
         public static string Generate(Script script)
         {
             var rm = new ResourceManager(typeof(Resources));
@@ -21,6 +21,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
             var streams = script.FindInternalStreams().ToList();
             var hlines = script.FindHLines().ToList();
             var variables = script.FindVariables().ToList();
+            valueFormatter = new MQL5ValueFormatter(script.DataTypes, streams);
 
             var code = new StringBuilder();
             foreach (var line in templateLines)
@@ -64,7 +65,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
                         VariableGenerator.AddInitialization(code, variables, valueFormatter);
                         break;
                     case "<<OPERATIONS>>":
-                        AddOperations(code, script);
+                        OperationseGenerator.AddOperations(code, script, valueFormatter);
                         break;
                     default:
                         code.AppendLine(line);
@@ -72,18 +73,6 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
                 }
             }
             return code.ToString();
-        }
-
-        private static void AddOperations(StringBuilder code, Script script)
-        {
-            foreach (var operation in script.Operations)
-            {
-                var value = valueFormatter.Format(operation);
-                if (value != "")
-                {
-                    code.AppendLine(value);
-                }
-            }
         }
 
         private static string GetPlotStyle(Value plot)

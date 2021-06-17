@@ -78,6 +78,8 @@ int OnCalculate(const int rates_total,
    for (int pos = MathMax(rates_total - 1 - bars_limit, MathMax(first, prev_calculated - 1)); pos < rates_total; ++pos)
    {
       int oldPos = rates_total - pos - 1;
+      plot1[pos] = cciTurbo;
+      plot2[pos] = cciTurbo2;
    }
    return rates_total;
 }
