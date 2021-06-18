@@ -15,5 +15,14 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
             var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "FunctionTests", "Min.mq5"));
             Verifier.CompareLineByLine(code, reference);
         }
+
+        [TestMethod]
+        public void Max()
+        {
+            var script = Functions.CreateMax();
+            var code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "FunctionTests", "Max.mq5"));
+            Verifier.CompareLineByLine(code, reference);
+        }
     }
 }
