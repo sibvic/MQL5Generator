@@ -53,6 +53,15 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
         }
 
         [TestMethod]
+        public void UnaryMinus()
+        {
+            var script = Operations.CreateUnaryMinus();
+            string code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "OperationTests", "UnaryMinus.mq5"));
+            Verifier.CompareLineByLine(code, reference);
+        }
+
+        [TestMethod]
         public void Equal()
         {
             var script = Operations.CreateEqual();

@@ -87,6 +87,9 @@
     <None Update="ref\OperationTests\Triary.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ref\OperationTests\UnaryMinus.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ref\PlotsTests\HLine.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
