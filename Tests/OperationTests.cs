@@ -26,6 +26,15 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
         }
 
         [TestMethod]
+        public void Reassign()
+        {
+            var script = Operations.CreateReassign();
+            string code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "OperationTests", "Reassign.mq5"));
+            Verifier.CompareLineByLine(code, reference);
+        }
+
+        [TestMethod]
         public void AssignIntToVarFloat()
         {
             var script = Operations.CreateAssignIntToVarFloat();
