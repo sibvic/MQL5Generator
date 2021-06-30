@@ -27,6 +27,9 @@
     <None Update="ref\BaseTests\OscillatorHeader.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ref\ConstantsTests\AssignColor.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ref\FunctionTests\Max.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
