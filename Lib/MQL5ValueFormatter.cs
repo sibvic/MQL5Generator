@@ -17,7 +17,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
             {
                 return "[pos]";
             }
-            return "[pos - " + Format("", index.Parameters[0]) + "]";
+            return "[pos - " + Format("", index.Parameters[0], false) + "]";
         }
     }
 }
