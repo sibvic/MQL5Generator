@@ -15,5 +15,14 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
             var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "ConstantsTests", "AssignColor.mq5"));
             Verifier.CompareLineByLine(code, reference);
         }
+
+        [TestMethod]
+        public void AssignFloat()
+        {
+            var script = Constants.CreateAssignFloat();
+            string code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "ConstantsTests", "AssignFloat.mq5"));
+            Verifier.CompareLineByLine(code, reference);
+        }
     }
 }
