@@ -33,5 +33,14 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
             var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "ConstantsTests", "AssignBoolean.mq5"));
             Verifier.CompareLineByLine(code, reference);
         }
+
+        [TestMethod]
+        public void AssignNA()
+        {
+            var script = Constants.CreateAssignNA();
+            string code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "ConstantsTests", "AssignNA.mq5"));
+            Verifier.CompareLineByLine(code, reference);
+        }
     }
 }
