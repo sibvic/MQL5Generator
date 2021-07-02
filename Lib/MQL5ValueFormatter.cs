@@ -5,8 +5,8 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
 {
     class MQL5ValueFormatter : AValueFormatter
     {
-        public MQL5ValueFormatter(DataTypes dataTypes, System.Collections.Generic.List<string> streams)
-            : base(dataTypes, streams)
+        public MQL5ValueFormatter(DataTypes dataTypes, System.Collections.Generic.List<string> streams, IndicatorsFormatter indicatorFormatter)
+            : base(dataTypes, streams, indicatorFormatter)
         {
 
         }

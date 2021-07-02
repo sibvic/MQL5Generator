@@ -24,5 +24,14 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
             var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "FunctionTests", "Max.mq5"));
             Verifier.CompareLineByLine(code, reference);
         }
+
+        [TestMethod]
+        public void Wma()
+        {
+            var script = Functions.CreateWma();
+            var code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "FunctionTests", "Wma.mq5"));
+            Verifier.CompareLineByLine(code, reference);
+        }
     }
 }

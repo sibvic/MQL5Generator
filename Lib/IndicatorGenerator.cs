@@ -21,9 +21,10 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
             var streams = script.FindInternalStreams().ToList();
             var hlines = script.FindHLines().ToList();
             var variables = script.FindVariables().ToList();
-            valueFormatter = new MQL5ValueFormatter(script.DataTypes, streams);
-
             var code = new StringBuilder();
+            var indicatorFormatter = new IndicatorsFormatter(script.FindIndicators().ToList(), code, "mq5");
+            valueFormatter = new MQL5ValueFormatter(script.DataTypes, streams, indicatorFormatter);
+            
             foreach (var line in templateLines)
             {
                 switch (line)
@@ -65,7 +66,7 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5
                         VariableGenerator.AddInitialization(code, variables, valueFormatter);
                         break;
                     case "<<OPERATIONS>>":
-                        OperationseGenerator.AddOperations(code, script, valueFormatter);
+                        OperationsGenerator.AddOperations(code, script, valueFormatter);
                         break;
                     default:
                         code.AppendLine(line);
