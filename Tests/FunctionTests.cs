@@ -26,6 +26,15 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
         }
 
         [TestMethod]
+        public void Highest()
+        {
+            var script = Functions.CreateHighest();
+            var code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "FunctionTests", "Highest.mq5"));
+            Verifier.CompareLineByLine(code, reference);
+        }
+
+        [TestMethod]
         public void Wma()
         {
             var script = Functions.CreateWma();
