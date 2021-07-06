@@ -51,6 +51,9 @@
     <None Update="ref\FunctionTests\Wma.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ref\FunctionTests\WmaWma.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ref\InputTests\BoolInput.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
