@@ -99,6 +99,9 @@
     <None Update="ref\OperationTests\Greater.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ref\OperationTests\Group.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ref\OperationTests\IfWithReturnValue.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

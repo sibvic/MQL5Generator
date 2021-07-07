@@ -123,5 +123,14 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
             var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "OperationTests", "And.mq5"));
             Verifier.CompareLineByLine(code, reference);
         }
+
+        [TestMethod]
+        public void Group()
+        {
+            var script = Operations.CreateGroup();
+            string code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "OperationTests", "Group.mq5"));
+            Verifier.CompareLineByLine(code, reference);
+        }
     }
 }
