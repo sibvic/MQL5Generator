@@ -111,6 +111,9 @@
     <None Update="ref\OperationTests\Reassign.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ref\OperationTests\ReassignStream.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ref\OperationTests\Triary.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
