@@ -39,6 +39,9 @@
     <None Update="ref\ConstantsTests\AssignNA.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ref\ConstantsTests\AssignString.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ref\FunctionTests\Avg.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
