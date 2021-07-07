@@ -45,6 +45,9 @@
     <None Update="ref\FunctionTests\Highest.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ref\FunctionTests\Lowest.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="ref\FunctionTests\Max.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
