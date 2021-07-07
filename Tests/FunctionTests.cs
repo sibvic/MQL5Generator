@@ -69,5 +69,14 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
             var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "FunctionTests", "Avg.mq5"));
             Verifier.CompareLineByLine(code, reference);
         }
+
+        [TestMethod]
+        public void Atr()
+        {
+            var script = Functions.CreateAtr();
+            var code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "FunctionTests", "Atr.mq5"));
+            Verifier.CompareLineByLine(code, reference);
+        }
     }
 }
