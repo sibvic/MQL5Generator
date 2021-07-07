@@ -135,6 +135,9 @@
     <None Update="ref\StreamTests\InternalStreamReuse.mq5">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="ref\StreamTests\InternalStreamReuseStd.mq5">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

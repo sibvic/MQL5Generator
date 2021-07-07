@@ -14,7 +14,15 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
             var code = IndicatorGenerator.Generate(script);
             var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "StreamTests", "InternalStreamReuse.mq5"));
             Verifier.CompareLineByLine(code, reference);
-            //TODO: assign
+        }
+
+        [TestMethod]
+        public void InternalStreamReuseStd()
+        {
+            var script = Streams.CreateInternalStreamReuseStd();
+            var code = IndicatorGenerator.Generate(script);
+            var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "StreamTests", "InternalStreamReuseStd.mq5"));
+            Verifier.CompareLineByLine(code, reference);
         }
 
         [TestMethod]
@@ -24,7 +32,6 @@ namespace ProfitRobots.TradeScriptConverter.Generators.MQL5.Tests
             var code = IndicatorGenerator.Generate(script);
             var reference = System.IO.File.ReadAllText(System.IO.Path.Combine("ref", "StreamTests", "InternalStreamLaterUse.mq5"));
             Verifier.CompareLineByLine(code, reference);
-            //TODO: assign
         }
     }
 }
